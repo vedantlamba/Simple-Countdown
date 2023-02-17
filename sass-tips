@@ -1,0 +1,83 @@
+1: Sass Operaters
+
+with operaters we can use mathematical calculations even in css properties within, for example.
+-- font-size: 50rem + 50rem;
+this we can't do in normal css but in scss we can do!
+it will we simply 100rem means 100px(if the font-size of html is 62.5%)
+
+2: Variables "The Most Useful And Important One's"
+
+to write Variables in scss just use the $ sign before writing the name of the Variables.
+example,
+$bg-name: red;
+$fontsize: 62.5%;
+
+
+3: Nesting
+
+we can write classes,element in its parent element, example.
+
+.cotainer{
+    .....
+    ....
+    box1{
+        h1{
+            color:red;
+        }
+    }
+}
+
+
+we may use '&' when we want to select parent in child , a very useful technique to not waste any time.
+example,
+
+h1{
+    color:xyz;
+
+    &:hover{
+        color:red;
+    }
+
+    // & means h1, parent.
+}
+
+4: Mixin
+
+lets say that we want to use same properties over and over again, then we can use mixin.
+
+@mixin sample1{
+    color:red;
+    background-color: blue;
+    font-size: 2rem;
+}
+
+now to add this sample1 or abc mixin in the css code,
+we can write @include mixin-name;
+
+just like functions we can also pass parameters in mixins, use $ sign before giving the parameters name,
+just write the mixin and its name with two brackets like functions
+example,
+
+@mixin sample2($font-s,$colorr){
+    color: $colorr;
+    font-size: $font-s;
+    padding:0.2rem;
+}
+
+and in css;
+
+@include sample2(2rem,red);
+
+
+5: Partials
+
+we can create different pages for different works in sass,
+we can actually call all the pages by their sass file name in a main sass file.
+
+to create a partial file we have to definitely give _ before giving its name. (by that vscode will get to know that we dont have to compile this file)
+
+now to call all the _partial files, we have to use @import them in the main scss file.
+example,
+
+@import "filename" (dont use _ before name here, preferable)
+@import "filename2"
